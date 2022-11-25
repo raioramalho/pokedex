@@ -77,7 +77,7 @@ function App() {
   }
 
   addEventListener('keypress', (event) => {
-
+    console.log(event.key)
   })
 
   const Pokes = () => {
