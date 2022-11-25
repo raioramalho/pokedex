@@ -38,10 +38,12 @@ function App() {
 
     if (currentItem >= maxItems) {
       currentItem = 0
+      setPokeNum(pokeNum + 1)
     }
 
     if (currentItem < 0) {
       currentItem = maxItems - 1
+      setPokeNum(pokeNum - 1)
     }
 
     items.forEach(item => item.classList.remove('current-item'))
@@ -61,15 +63,15 @@ function App() {
 
   return (
     <div className="App">
-      <img id="poke-logo" src='public/pokemon-logo.webp' />
+
       <section id="gallery-wrapper">
         <button className='arrow-left control' onClick={() => {
           controlItem(true)
-          setPokeNum(pokeNum - 1)
+
         }}>LEFT</button>
         <button className='arrow-right control' onClick={() => {
           controlItem(false)
-          setPokeNum(pokeNum + 1)
+
         }}>RIGHT</button>
 
         <div className="gallery">
@@ -83,7 +85,13 @@ function App() {
             pokeName={data.name} />
 
           <Pokemons
-            sprite={data.sprites.other.dream_world.front_default}
+            sprite={data.sprites.front_default}
+            id={data.id}
+            pokeType={data.types[0].type.name}
+            pokeName={data.name} />
+
+          <Pokemons
+            sprite={data.sprites.back_default}
             id={data.id}
             pokeType={data.types[0].type.name}
             pokeName={data.name} />

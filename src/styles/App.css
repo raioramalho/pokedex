@@ -23,10 +23,9 @@ body{
 }
 
 #poke-logo{
-  width: 15rem;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
+  width: 25rem;
+  top: 10%;
+  position: fixed;
 }
 
 
