@@ -98,22 +98,22 @@ function App() {
           <Pokemons
 
             sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id || 1}.svg`}
-            id={data.id}
+            id={data.id || 1}
             //pokeType={pokeTypes.type.name}
-            pokeName={data.name} />
+            pokeName={data.name || "BULBASAUR"} />
 
           <Pokemons
             test='current-item'
             sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id || 1}.png`}
-            id={data.id}
-            //pokeType={pokeTypes.type.name}
-            pokeName={data.name} />
+            id={data.id || 1}
+            //pokeType={String(pokeTypes.type.name)}
+            pokeName={data.name || "BULBASAUR"} />
 
           <Pokemons
             sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${data.id || 1}.png`}
-            id={data.id}
+            id={data.id || 1}
             //pokeType={pokeTypes.type.name}
-            pokeName={data.name} />
+            pokeName={data.name || "BULBASAUR"} />
 
         </div>
 

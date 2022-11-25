@@ -7,7 +7,7 @@ const Pokemons = (props) =>{
                   </div>
                   <div className="info-pokemon">
                     <span className="id-pokemon">#0{String(props.id)}</span>
-                    <span className="type-pokemon">{String(props.pokeType)}</span>
+                    <span className="type-pokemon">{props.pokeType}</span>
                   </div>
 
                   <div className="media-icons">
