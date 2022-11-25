@@ -7,7 +7,7 @@ import Loading from './components/Loading'
 import axios from 'axios'
 
 
-let currentItem = 0;
+let currentItem = 1;
 const items = document.querySelectorAll('.card')
 const maxItems = document.querySelectorAll('.card').length
 
@@ -22,6 +22,7 @@ function App() {
   useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
+      setIsLoading(true)
       // get the data from the api
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${String(pokeNum)}`);
       // convert the data to json
@@ -30,7 +31,9 @@ function App() {
       // set state with the result
       setData(json);
       setPokeTypes(json.types[0])
+      setIsLoading(false)
       setContent(<Pokes/>)
+
     }
 
     // call the function
