@@ -25,7 +25,7 @@ function App() {
         let res = response.data
         console.log(res)
         setData(res)
-        setContent(<Pokes/>)
+        //setContent(<Pokes/>)
       })
   }, [pokeNum])
 
