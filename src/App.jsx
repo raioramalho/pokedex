@@ -43,7 +43,7 @@ function App() {
 
     if (currentItem < 0) {
       currentItem = maxItems - 1
-      setPokeNum(pokeNum - 1)
+      setPokeNum(pokeNum + 1)
     }
 
     items.forEach(item => item.classList.remove('current-item'))
@@ -79,19 +79,19 @@ function App() {
 
           <Pokemons
             test="current-item"
-            sprite={data.sprites.other.dream_world.front_default}
+            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`}
             id={data.id}
             pokeType={data.types[0].type.name}
             pokeName={data.name} />
 
           <Pokemons
-            sprite={data.sprites.front_default}
+            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`}
             id={data.id}
             pokeType={data.types[0].type.name}
             pokeName={data.name} />
 
           <Pokemons
-            sprite={data.sprites.back_default}
+            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${data.id}.png`}
             id={data.id}
             pokeType={data.types[0].type.name}
             pokeName={data.name} />
