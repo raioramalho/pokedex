@@ -1,6 +1,6 @@
 const Pokemons = (props) =>{
     return(
-      <div className="card current-item">
+      <div className={`card ${props.test}`}>
               <div className="card-content">
                 <div className="image">
                     <img alt='pokemon-name' src={String(props.sprite)}/>
