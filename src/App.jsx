@@ -19,14 +19,20 @@ function App() {
   const [pokeNum, setPokeNum] = useState(1)
   const [content, setContent] = useState(<Loading/>)
 
+
+  const handleChangeContent = () =>{
+    setContent(<>Carregando</>)
+    //setContent(<Pokes/>)
+  }
+
   useEffect(() => {
     api.get(`/${String(pokeNum)}`)
       .then((response) => {
         let res = response.data
         console.log(res)
         setData(res)
-        //setContent(<Pokes/>)
       })
+    console.log("dados carregados..")
   }, [pokeNum])
 
   const controls = document.querySelectorAll('.control')
