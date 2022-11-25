@@ -13,9 +13,10 @@ import Pokemons from './components/Pokemons'
 function App() {
   const [ data, setData ] = useState([])
   const [ isloading, setIsLoading ] = useState(true)
+  const [ pokeNum, setPokeNum ] = useState(1)
 
   useEffect(() => {
-    api.get('/1')
+    api.get(`/${String(pokeNum)}`)
     .then((response) => {
       let res = response.data
       console.log(res)
@@ -23,7 +24,7 @@ function App() {
       setIsLoading(false)
     })
     setIsLoading(false)
-  }, [])
+  }, [pokeNum])
 
   const controls = document.querySelectorAll('.control')
 
@@ -64,9 +65,11 @@ function App() {
       <section id="gallery-wrapper">
         <button className='arrow-left control' onClick={() => {
           controlItem(true)
+          setPokeNum(pokeNum - 1)
         }}>LEFT</button>
         <button className='arrow-right control' onClick={() =>{
           controlItem(false)
+          setPokeNum(pokeNum + 1)
         }}>RIGHT</button>
 
         <div className="gallery">
