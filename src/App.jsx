@@ -88,8 +88,6 @@ function App() {
             pokeType={data.types[0].type.name}
             pokeName={data.name} />
 
-
-
         </div>
 
 
