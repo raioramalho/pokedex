@@ -19,6 +19,9 @@ function App() {
   const [pokeNum, setPokeNum] = useState(1)
   const [content, setContent] = useState(<Loading/>)
 
+  const handleChangeContent = () =>{
+    setContent(<Pokes></Pokes>)
+  }
 
   async function fetchData() {
     let response = await api.get(`/${String(pokeNum)}`);
@@ -26,7 +29,7 @@ function App() {
     console.log(res)
     console.log("dados carregados..")
     setData(res)
-    setContent(<Pokes/>)
+    handleChangeContent()
   }
 
   useEffect(() => {
