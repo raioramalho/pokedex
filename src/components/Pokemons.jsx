@@ -3,7 +3,7 @@ const Pokemons = (props) =>{
       <div className={`card ${props.test}`}>
               <div className="card-content">
                 <div className="image">
-                    <img alt='pokemon-name' src={String(props.sprite)}/>
+                    <img className="pokemon-image" alt={String(props.pokeName)} src={String(props.sprite)}/>
                   </div>
                   <div className="info-pokemon">
                     <span className="id-pokemon">#0{String(props.id)}</span>
@@ -11,13 +11,11 @@ const Pokemons = (props) =>{
                   </div>
 
                   <div className="media-icons">
-
                   </div>
 
                   <div className="name-pokemon">
-
                     <span className="pokemon-name">
-                      {String(props.pokeName)}
+                      {String(props.pokeName).toUpperCase()}
                     </span>
                   </div>
                 </div>
