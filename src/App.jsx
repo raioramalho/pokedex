@@ -32,7 +32,7 @@ function App() {
       setData(json);
       setPokeTypes(json.types[0])
       setIsLoading(false)
-      setContent(<Pokes/>)
+      setContent(<Pokes />)
 
     }
 
@@ -97,20 +97,20 @@ function App() {
 
           <Pokemons
 
-            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`}
+            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id || 1}.svg`}
             id={data.id}
             //pokeType={pokeTypes.type.name}
             pokeName={data.name} />
 
           <Pokemons
             test='current-item'
-            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`}
+            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id || 1}.png`}
             id={data.id}
             //pokeType={pokeTypes.type.name}
             pokeName={data.name} />
 
           <Pokemons
-            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${data.id}.png`}
+            sprite={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${data.id || 1}.png`}
             id={data.id}
             //pokeType={pokeTypes.type.name}
             pokeName={data.name} />
