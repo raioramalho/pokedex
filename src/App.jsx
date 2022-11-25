@@ -2,21 +2,27 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import './styles/App.css'
 import { api } from './api/api'
+import Pokemons from './components/Pokemons'
 
 
   let currentItem = 0;
   const items = document.querySelectorAll('.card')
   const maxItems = document.querySelectorAll('.card').length
 
+
 function App() {
   const [ data, setData ] = useState([])
+  const [ isloading, setIsLoading ] = useState(true)
 
   useEffect(() => {
     api.get('/1')
     .then((response) => {
-      console.log(response.data)
-      setData(response.data)
+      let res = response.data
+      console.log(res)
+      setData(res)
+      setIsLoading(false)
     })
+    setIsLoading(false)
   }, [])
 
   const controls = document.querySelectorAll('.control')
@@ -50,6 +56,8 @@ function App() {
 
 
 
+
+
   return (
     <div className="App">
       <img id="poke-logo" src='public/pokemon-logo.webp'/>
@@ -63,128 +71,12 @@ function App() {
 
         <div className="gallery">
 
-          <div className="card current-item">
-            <div className="card-content">
-              <div className="image">
-                  <img alt='pokemon-name' src={String(data.sprites.other.dream_world.front_default)}/>
-                </div>
-                <div className="info-pokemon">
-                  <span className="id-pokemon">#</span>
-                  <span className="type-pokemon"></span>
-                </div>
 
-                <div className="media-icons">
-
-                </div>
-
-                <div className="name-pokemon">
-
-                  <span className="pokemon-name">
-                    {String(data.name)}
-                  </span>
-                </div>
-              </div>
-          </div>
-
-
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                  <img alt='pokemon-name' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"/>
-                </div>
-
-                <div className="media-icons">
-
-                </div>
-
-                <div className="name-pokemon">
-
-                  <span className="pokemon-name">
-                    Bubasaur1
-                  </span>
-                </div>
-              </div>
-          </div>
-
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                  <img alt='pokemon-name' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg"/>
-                </div>
-
-                <div className="media-icons">
-
-                </div>
-
-                <div className="name-pokemon">
-
-                  <span className="pokemon-name">
-                    Bubasaur2
-                  </span>
-                </div>
-              </div>
-          </div>
-
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                  <img alt='pokemon-name' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg"/>
-                </div>
-
-                <div className="media-icons">
-
-                </div>
-
-                <div className="name-pokemon">
-
-                  <span className="pokemon-name">
-                    Bubasaur3
-                  </span>
-                </div>
-              </div>
-          </div>
-
-
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                  <img alt='pokemon-name' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg"/>
-                </div>
-
-                <div className="media-icons">
-
-                </div>
-
-                <div className="name-pokemon">
-
-                  <span className="pokemon-name">
-                    Bubasaur
-                  </span>
-                </div>
-              </div>
-          </div>
-
-          <div className="card">
-            <div className="card-content">
-              <div className="image">
-                  <img alt='pokemon-name' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg"/>
-                </div>
-
-                <div className="media-icons">
-
-                </div>
-
-                <div className="name-pokemon">
-
-                  <span className="pokemon-name">
-                    Bubasaur
-                  </span>
-                </div>
-              </div>
-          </div>
-
-
-
+          <Pokemons
+            sprite={data.sprites.other.dream_world.front_default}
+            id={data.id}
+            pokeType={data.types[0].type.name}
+            pokeName={data.name}/>
 
 
         </div>
