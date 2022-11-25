@@ -76,6 +76,10 @@ function App() {
     console.log("Clicked at: ", isLeft, "currentItem: ", currentItem)
   }
 
+  addEventListener('keypress', (event) => {
+
+  })
+
   const Pokes = () => {
     return (
       <section id="gallery-wrapper">
