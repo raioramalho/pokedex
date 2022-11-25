@@ -1,11 +1,23 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
 import './styles/App.css'
+import { api } from './api/api'
+
 
   let currentItem = 0;
   const items = document.querySelectorAll('.card')
   const maxItems = document.querySelectorAll('.card').length
 
 function App() {
-  console.log(maxItems)
+  const [ data, setData ] = useState([])
+
+  useEffect(() => {
+    api.get('/1')
+    .then((response) => {
+      console.log(response.data)
+      setData(response.data)
+    })
+  }, [])
 
   const controls = document.querySelectorAll('.control')
 
@@ -54,11 +66,11 @@ function App() {
           <div className="card current-item">
             <div className="card-content">
               <div className="image">
-                  <img alt='pokemon-name' src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"/>
+                  <img alt='pokemon-name' src={String(data.sprites.other.dream_world.front_default)}/>
                 </div>
                 <div className="info-pokemon">
-                  <span className="id-pokemon">#001</span>
-                  <span className="type-pokemon">Grass</span>
+                  <span className="id-pokemon">#</span>
+                  <span className="type-pokemon"></span>
                 </div>
 
                 <div className="media-icons">
@@ -68,7 +80,7 @@ function App() {
                 <div className="name-pokemon">
 
                   <span className="pokemon-name">
-                    Bubasaur
+                    {String(data.name)}
                   </span>
                 </div>
               </div>
