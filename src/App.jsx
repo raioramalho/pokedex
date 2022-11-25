@@ -20,20 +20,19 @@ function App() {
   const [content, setContent] = useState(<Loading/>)
 
 
-  const handleChangeContent = () =>{
-    setContent(<>Carregando</>)
-    //setContent(<Pokes/>)
+  async function fetchData() {
+    let response = await api.get(`/${String(pokeNum)}`);
+    let res = await response.data;
+    console.log(res)
+    console.log("dados carregados..")
+    setData(res)
+    setContent(<Pokes/>)
   }
 
   useEffect(() => {
-    api.get(`/${String(pokeNum)}`)
-      .then((response) => {
-        let res = response.data
-        console.log(res)
-        setData(res)
-      })
-    console.log("dados carregados..")
-  }, [pokeNum])
+    fetchData();
+  }, [pokeNum]);
+
 
   const controls = document.querySelectorAll('.control')
 
