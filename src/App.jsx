@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import './styles/App.css'
-import { api } from './api/api'
 import Pokemons from './components/Pokemons'
 import Loading from './components/Loading'
-import axios from 'axios'
+
 
 
 let currentItem = 1;
