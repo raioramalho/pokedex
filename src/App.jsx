@@ -17,6 +17,7 @@ function App() {
   const [pokeNum, setPokeNum] = useState(1)
   const [content, setContent] = useState(<Loading />)
   const [isLoading, setIsLoading] = useState(true)
+  const [ key, setKey ] = useState('')
 
 
   useEffect(() => {
@@ -33,7 +34,6 @@ function App() {
       setPokeTypes(json.types[0])
       setIsLoading(false)
       setContent(<Pokes />)
-
     }
 
     // call the function
@@ -43,53 +43,21 @@ function App() {
   }, [pokeNum])
 
 
-  const controls = document.querySelectorAll('.control')
-
-  function controlItem(isLeft) {
-
-    if (isLeft) {
-      currentItem -= 1
-      setPokeNum(pokeNum - 1)
-    } else {
-      currentItem += 1
-      setPokeNum(pokeNum + 1)
-    }
-
-    if (currentItem >= maxItems) {
-      currentItem = 0
-
-    }
-
-    if (currentItem <= 0) {
-      currentItem = maxItems - 1
-
-    }
-
-    items.forEach(item => item.classList.remove('current-item'))
-    items[currentItem].scrollIntoView({
-      inline: "center",
-      behavior: "smooth"
-    })
-
-    items[currentItem].classList.add("current-item")
-
-    console.log("Clicked at: ", isLeft, "currentItem: ", currentItem)
-  }
-
-  addEventListener('keypress', (event) => {
-    console.log(event.key)
-  })
-
   const Pokes = () => {
     return (
       <section id="gallery-wrapper">
         <button className='arrow-left control' onClick={() => {
-          controlItem(true)
-
+          if(pokeNum === 1){
+            console.log("This is: ",pokeNum)
+            setPokeNum(1)
+          }
+          else{
+            setPokeNum(pokeNum - 1)
+            console.log(pokeNum)}
         }}>LEFT</button>
         <button className='arrow-right control' onClick={() => {
-          controlItem(false)
-
+          setPokeNum(pokeNum + 1)
+          console.log(pokeNum)
         }}>RIGHT</button>
 
         <div className="gallery">
