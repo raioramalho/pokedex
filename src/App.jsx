@@ -45,7 +45,7 @@ function App() {
   const Pokes = () => {
     return (
       <section id="gallery-wrapper">
-        <button className='arrow-left control' onClick={() => {
+        <button className='arrow-left' onClick={() => {
           if(pokeNum === 1){
             console.log("This is: ",pokeNum)
             setPokeNum(1)
@@ -54,7 +54,7 @@ function App() {
             setPokeNum(pokeNum - 1)
             console.log(pokeNum)}
         }}>LEFT</button>
-        <button className='arrow-right control' onClick={() => {
+        <button className='arrow-right' onClick={() => {
           setPokeNum(pokeNum + 1)
           console.log(pokeNum)
         }}>RIGHT</button>
